@@ -239,3 +239,5 @@ processChatMessage("Where do I throw plastic bottles?");
 ---
 
 **WasteWise AI** - Making waste segregation simple and accessible for everyone in Chennai! 🌟
+
+**Build by Sai Santhana Lakshmi S**

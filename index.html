@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WasteWise AI - Chennai Waste Segregation Guide</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%231B6B3A'/><text y='.9em' font-size='70' x='15'>♻️</text></svg>">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <button id="menuToggle" class="menu-toggle" aria-label="Toggle menu">
+            <span class="hamburger"></span>
+        </button>
+        <div class="header-logo">
+            <svg class="logo-icon-small" viewBox="0 0 40 40" width="32" height="32">
+                <circle cx="20" cy="20" r="20" fill="#1B6B3A"/>
+                <text x="20" y="26" font-size="20" text-anchor="middle" fill="white">♻️</text>
+            </svg>
+            <h1>WasteWise AI</h1>
+        </div>
+        <button id="newChatMobile" class="new-chat-mobile" aria-label="New chat">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12h14"/>
+            </svg>
+        </button>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-container">
+                <svg class="logo-icon" viewBox="0 0 40 40" width="40" height="40">
+                    <circle cx="20" cy="20" r="20" fill="#1B6B3A"/>
+                    <text x="20" y="26" font-size="20" text-anchor="middle" fill="white">♻️</text>
+                </svg>
+                <div class="logo-text">
+                    <h2 class="sidebar-logo">WasteWise AI</h2>
+                    <p class="sidebar-subtitle">Chennai Waste Guide</p>
+                </div>
+            </div>
+            <div class="items-badge">
+                <span class="badge-icon">📊</span>
+                <span class="badge-text">200+ waste items</span>
+            </div>
+        </div>
+
+        <button id="newChatBtn" class="new-chat-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12h14"/>
+            </svg>
+            <span>New Chat</span>
+        </button>
+
+        <nav class="sidebar-nav">
+            <button class="nav-item active" data-tab="chatbot">
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+                <span class="nav-text">Chat</span>
+            </button>
+            <button class="nav-item" data-tab="search">
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+                </svg>
+                <span class="nav-text">Search</span>
+            </button>
+            <button class="nav-item" data-tab="visual">
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+                    <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+                </svg>
+                <span class="nav-text">Visual Guide</span>
+            </button>
+            <button class="nav-item" data-tab="education">
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                </svg>
+                <span class="nav-text">Learn</span>
+            </button>
+            <button class="nav-item" data-tab="history">
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                </svg>
+                <span class="nav-text">History</span>
+            </button>
+        </nav>
+
+        <div class="sidebar-footer">
+            <p class="footer-text">An AI-Based Waste Segregation Guide for Sustainable Urban Living</p>
+            <p class="footer-credit">Built by Sai Santhana Lakshmi S</p>
+            <p class="footer-internship">1M1B AI for Sustainability Virtual Internship | 2026</p>
+        </div>
+    </aside>
+
+    <!-- Overlay for mobile menu -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Chatbot Section (Default) -->
+        <section id="chatbot" class="content-section active">
+            <div class="chat-container">
+                <div id="chatMessages" class="chat-messages">
+                    <div class="welcome-message">
+                        <div class="welcome-icon">♻️</div>
+                        <h2>Welcome to WasteWise AI</h2>
+                        <p>Your intelligent waste segregation assistant for Chennai. Ask me about any waste item, and I'll guide you to the right bin!</p>
+                        <div class="quick-suggestions">
+                            <button class="suggestion-btn" data-question="Where do I throw banana peels?">🍌 Banana peels</button>
+                            <button class="suggestion-btn" data-question="Which bin for plastic bottles?">🥤 Plastic bottles</button>
+                            <button class="suggestion-btn" data-question="How to dispose batteries?">🔋 Batteries</button>
+                            <button class="suggestion-btn" data-question="Where do diapers go?">🧷 Diapers</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Loading indicator -->
+                <div id="loadingIndicator" class="loading-indicator">
+                    <div class="loading-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+
+                <div class="chat-input-area">
+                    <div class="input-wrapper">
+                        <textarea id="chatInput" placeholder="Ask about any waste item..." rows="1"></textarea>
+                        <button id="chatSendBtn" class="send-btn" aria-label="Send message">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Section -->
+        <section id="search" class="content-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>🔍 Search Waste Items</h2>
+                    <p class="section-subtitle">Find the right bin for any waste item</p>
+                </div>
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Type waste item (e.g., banana peel, plastic bottle...)" autocomplete="off">
+                        <button id="searchBtn">Search</button>
+                    </div>
+                    <div id="suggestions" class="suggestions"></div>
+                    <div id="searchResult" class="result-card"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visual Guide Section -->
+        <section id="visual" class="content-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>📊 Visual Waste Guide</h2>
+                    <p class="section-subtitle">Learn which items go into each colored bin</p>
+                </div>
+                <div class="bins-grid">
+                    <div class="bin-card green-bin">
+                        <div class="bin-header">
+                            <span class="bin-icon">🟢</span>
+                            <h3>Green Bin</h3>
+                        </div>
+                        <p class="bin-description">Wet / Organic Waste</p>
+                        <ul class="waste-items">
+                            <li>🍌 Fruit & vegetable peels</li>
+                            <li>🍚 Leftover food & cooked items</li>
+                            <li>🥚 Egg shells</li>
+                            <li>🍵 Tea bags & coffee grounds</li>
+                            <li>🌿 Garden waste & leaves</li>
+                            <li>🌾 Flowers & plant trimmings</li>
+                            <li>🦴 Bones & meat scraps</li>
+                            <li>🍞 Bread & bakery waste</li>
+                        </ul>
+                    </div>
+
+                    <div class="bin-card blue-bin">
+                        <div class="bin-header">
+                            <span class="bin-icon">🔵</span>
+                            <h3>Blue Bin</h3>
+                        </div>
+                        <p class="bin-description">Dry / Recyclable Waste</p>
+                        <ul class="waste-items">
+                            <li>📄 Paper & newspapers</li>
+                            <li>📦 Cardboard boxes</li>
+                            <li>🥤 Plastic bottles & containers</li>
+                            <li>🥫 Metal cans & tins</li>
+                            <li>🍾 Glass bottles & jars</li>
+                            <li>👕 Old clothes & textiles</li>
+                            <li>📱 E-waste (phones, cables)</li>
+                            <li>🎒 Bags & packaging materials</li>
+                        </ul>
+                    </div>
+
+                    <div class="bin-card red-bin">
+                        <div class="bin-header">
+                            <span class="bin-icon">🔴</span>
+                            <h3>Red Bin</h3>
+                        </div>
+                        <p class="bin-description">Hazardous Waste</p>
+                        <ul class="waste-items">
+                            <li>🔋 Batteries (all types)</li>
+                            <li>💊 Expired medicines</li>
+                            <li>🧪 Chemicals & pesticides</li>
+                            <li>🎨 Paint & solvents</li>
+                            <li>💡 CFL bulbs & tubes</li>
+                            <li>🧴 Cosmetics & nail polish</li>
+                            <li>🩹 Medical waste (syringes)</li>
+                            <li>⚡ Electronic batteries</li>
+                        </ul>
+                    </div>
+
+                    <div class="bin-card black-bin">
+                        <div class="bin-header">
+                            <span class="bin-icon">⚫</span>
+                            <h3>Black Bin</h3>
+                        </div>
+                        <p class="bin-description">Sanitary / Reject Waste</p>
+                        <ul class="waste-items">
+                            <li>🧷 Diapers (baby & adult)</li>
+                            <li>🩸 Sanitary napkins & pads</li>
+                            <li>🧻 Soiled tissues & wipes</li>
+                            <li>🧤 Used gloves & masks</li>
+                            <li>🩹 Bandages & cotton</li>
+                            <li>🧽 Contaminated materials</li>
+                            <li>💇 Hair & personal hygiene items</li>
+                            <li>🚽 Bathroom waste</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="content-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>📚 Learn About Waste Management</h2>
+                    <p class="section-subtitle">Understanding Chennai's waste segregation system</p>
+                </div>
+                <div class="education-content">
+                    <div class="info-card">
+                        <h3>🌍 Why Waste Segregation Matters</h3>
+                        <p>Chennai generates over 6,500 tonnes of waste daily. Proper segregation helps:</p>
+                        <ul>
+                            <li>Reduce landfill burden and environmental pollution</li>
+                            <li>Enable efficient recycling and composting</li>
+                            <li>Protect sanitation workers from hazardous materials</li>
+                            <li>Create a cleaner, healthier Chennai</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>📋 Chennai Corporation Rules</h3>
+                        <p>As per Greater Chennai Corporation guidelines:</p>
+                        <ul>
+                            <li>All households must segregate waste at source</li>
+                            <li>Use separate bins for wet, dry, hazardous, and sanitary waste</li>
+                            <li>Hand over segregated waste to collection workers</li>
+                            <li>Penalties apply for non-compliance</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>♻️ Best Practices</h3>
+                        <ul>
+                            <li><strong>Rinse containers:</strong> Clean plastic and glass before disposal</li>
+                            <li><strong>Flatten boxes:</strong> Compress cardboard to save space</li>
+                            <li><strong>Wrap hazardous waste:</strong> Seal batteries and medicines properly</li>
+                            <li><strong>Compost at home:</strong> Convert organic waste into fertilizer</li>
+                            <li><strong>Reduce & reuse:</strong> Minimize waste generation</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>📞 Need Help?</h3>
+                        <p>Contact Greater Chennai Corporation:</p>
+                        <ul>
+                            <li>Helpline: 1913 (24/7)</li>
+                            <li>Website: chennaicorporation.gov.in</li>
+                            <li>Mobile App: Chennai Corporation App</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-card tip-card">
+                        <h3>💡 Did You Know?</h3>
+                        <p>Chennai's wet waste can be converted into compost within 45 days! By segregating properly, you're contributing to a circular economy and reducing the city's carbon footprint.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chat History Section -->
+        <section id="history" class="content-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>🕒 Chat History</h2>
+                    <p class="section-subtitle">View your previous conversations</p>
+                    <button id="clearHistoryBtn" class="clear-history-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                        </svg>
+                        <span>Clear History</span>
+                    </button>
+                </div>
+                <div class="history-container">
+                    <div id="historyList" class="history-list">
+                        <p class="empty-history">No chat history yet. Start a conversation in the Chat tab!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%231B6B3A'/><text y='.9em' font-size='70' x='15'>♻️</text></svg>">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WasteWise AI - Chennai Waste Segregation Guide</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%231B6B3A'/><text y='.9em' font-size='70' x='15'>♻️</text></svg>">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Did You Know Popup Banner -->
+    <div id="didYouKnowBanner" class="banner-popup">
+        <div class="banner-content">
+            <span class="banner-icon">💡</span>
+            <div class="banner-text">
+                <strong>Did You Know?</strong>
+                <p id="bannerFactText"></p>
+            </div>
+            <button id="closeBanner" class="banner-close">&times;</button>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-container">
+                    <svg class="logo-icon" viewBox="0 0 40 40" width="40" height="40">
+                        <circle cx="20" cy="20" r="20" fill="#1B6B3A"/>
+                        <text x="20" y="26" font-size="20" text-anchor="middle" fill="white">♻️</text>
+                    </svg>
+                    <div class="logo-text">
+                        <h1 class="sidebar-logo">WasteWise AI</h1>
+                        <p class="sidebar-subtitle">Chennai Waste Guide</p>
+                    </div>
+                </div>
+                <div class="items-badge">
+                    <span class="badge-icon">📊</span>
+                    <span class="badge-text">200+ waste items covered</span>
+                </div>
+            </div>
+
+            <button id="newChatBtn" class="new-chat-btn">
+                <span class="btn-icon">➕</span>
+                <span>New Chat</span>
+            </button>
+
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-tab="search">
+                    <span class="nav-icon">🔍</span>
+                    <span class="nav-text">Search</span>
+                </button>
+                <button class="nav-item" data-tab="chatbot">
+                    <span class="nav-icon">💬</span>
+                    <span class="nav-text">Chatbot</span>
+                </button>
+                <button class="nav-item" data-tab="visual">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">Visual Guide</span>
+                </button>
+                <button class="nav-item" data-tab="education">
+                    <span class="nav-icon">📚</span>
+                    <span class="nav-text">Learn</span>
+                </button>
+                <button class="nav-item" data-tab="history">
+                    <span class="nav-icon">🕒</span>
+                    <span class="nav-text">Chat History</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p class="footer-text">An AI-Based Waste Segregation Guide for Sustainable Urban Living</p>
+                <p class="footer-credit">Built by Sai Santhana Lakshmi S</p>
+                <p class="footer-internship">1M1B AI for Sustainability Virtual Internship | 2026</p>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Search Section -->
+            <section id="search" class="content-section active">
+                <div class="section-header">
+                    <h2>🔍 Search Waste Items</h2>
+                    <p class="section-subtitle">Find the right bin for any waste item</p>
+                </div>
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Type waste item (e.g., banana peel, plastic bottle, battery...)" autocomplete="off">
+                        <button id="searchBtn">Search</button>
+                    </div>
+                    <div id="suggestions" class="suggestions"></div>
+                    <div id="searchResult" class="result-card"></div>
+                </div>
+            </section>
+
+            <!-- Chatbot Section -->
+            <section id="chatbot" class="content-section">
+                <div class="section-header">
+                    <h2>💬 Chat with WasteWise AI</h2>
+                    <p class="section-subtitle">Ask me anything about waste segregation</p>
+                </div>
+                <div class="chatbot-container">
+                    <div id="chatMessages" class="chat-messages">
+                        <div class="message bot-message">
+                            <div class="message-content">
+                                <p>👋 Hello! I'm WasteWise AI, your friendly waste segregation assistant for Chennai. Ask me about any waste item, and I'll tell you which bin to use!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-input-container">
+                        <input type="text" id="chatInput" placeholder="Ask me about any waste item..." autocomplete="off">
+                        <button id="chatSendBtn">
+                            <span>Send</span>
+                            <span class="send-icon">➤</span>
+                        </button>
+                    </div>
+                    <div class="quick-actions">
+                        <p>Quick questions:</p>
+                        <button class="quick-btn" data-question="Where do I throw banana peels?">Banana peels</button>
+                        <button class="quick-btn" data-question="Which bin for plastic bottles?">Plastic bottles</button>
+                        <button class="quick-btn" data-question="How to dispose batteries?">Batteries</button>
+                        <button class="quick-btn" data-question="Where do diapers go?">Diapers</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Visual Guide Section -->
+            <section id="visual" class="content-section">
+                <div class="section-header">
+                    <h2>📊 Visual Waste Guide</h2>
+                    <p class="section-subtitle">Learn which items go into each colored bin</p>
+                </div>
+                <div class="visual-guide">
+                    <div class="bins-grid">
+                        <!-- Green Bin -->
+                        <div class="bin-card green-bin">
+                            <div class="bin-header">
+                                <span class="bin-icon">🟢</span>
+                                <h3>Green Bin</h3>
+                            </div>
+                            <p class="bin-description">Wet / Organic Waste</p>
+                            <ul class="waste-items">
+                                <li>🍌 Fruit & vegetable peels</li>
+                                <li>🍚 Leftover food & cooked items</li>
+                                <li>🥚 Egg shells</li>
+                                <li>🍵 Tea bags & coffee grounds</li>
+                                <li>🌿 Garden waste & leaves</li>
+                                <li>🌾 Flowers & plant trimmings</li>
+                                <li>🦴 Bones & meat scraps</li>
+                                <li>🍞 Bread & bakery waste</li>
+                            </ul>
+                        </div>
+
+                        <!-- Blue Bin -->
+                        <div class="bin-card blue-bin">
+                            <div class="bin-header">
+                                <span class="bin-icon">🔵</span>
+                                <h3>Blue Bin</h3>
+                            </div>
+                            <p class="bin-description">Dry / Recyclable Waste</p>
+                            <ul class="waste-items">
+                                <li>📄 Paper & newspapers</li>
+                                <li>📦 Cardboard boxes</li>
+                                <li>🥤 Plastic bottles & containers</li>
+                                <li>🥫 Metal cans & tins</li>
+                                <li>🍾 Glass bottles & jars</li>
+                                <li>👕 Old clothes & textiles</li>
+                                <li>📱 E-waste (phones, cables)</li>
+                                <li>🎒 Bags & packaging materials</li>
+                            </ul>
+                        </div>
+
+                        <!-- Red Bin -->
+                        <div class="bin-card red-bin">
+                            <div class="bin-header">
+                                <span class="bin-icon">🔴</span>
+                                <h3>Red Bin</h3>
+                            </div>
+                            <p class="bin-description">Hazardous Waste</p>
+                            <ul class="waste-items">
+                                <li>🔋 Batteries (all types)</li>
+                                <li>💊 Expired medicines</li>
+                                <li>🧪 Chemicals & pesticides</li>
+                                <li>🎨 Paint & solvents</li>
+                                <li>💡 CFL bulbs & tubes</li>
+                                <li>🧴 Cosmetics & nail polish</li>
+                                <li>🩹 Medical waste (syringes)</li>
+                                <li>⚡ Electronic batteries</li>
+                            </ul>
+                        </div>
+
+                        <!-- Black Bin -->
+                        <div class="bin-card black-bin">
+                            <div class="bin-header">
+                                <span class="bin-icon">⚫</span>
+                                <h3>Black Bin</h3>
+                            </div>
+                            <p class="bin-description">Sanitary / Reject Waste</p>
+                            <ul class="waste-items">
+                                <li>🧷 Diapers (baby & adult)</li>
+                                <li>🩸 Sanitary napkins & pads</li>
+                                <li>🧻 Soiled tissues & wipes</li>
+                                <li>🧤 Used gloves & masks</li>
+                                <li>🩹 Bandages & cotton</li>
+                                <li>🧽 Contaminated materials</li>
+                                <li>💇 Hair & personal hygiene items</li>
+                                <li>🚽 Bathroom waste</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education Section -->
+            <section id="education" class="content-section">
+                <div class="section-header">
+                    <h2>📚 Learn About Waste Management</h2>
+                    <p class="section-subtitle">Understanding Chennai's waste segregation system</p>
+                </div>
+                <div class="education-content">
+                    <div class="info-card">
+                        <h3>🌍 Why Waste Segregation Matters</h3>
+                        <p>Chennai generates over 6,500 tonnes of waste daily. Proper segregation helps:</p>
+                        <ul>
+                            <li>Reduce landfill burden and environmental pollution</li>
+                            <li>Enable efficient recycling and composting</li>
+                            <li>Protect sanitation workers from hazardous materials</li>
+                            <li>Create a cleaner, healthier Chennai</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>📋 Chennai Corporation Rules</h3>
+                        <p>As per Greater Chennai Corporation guidelines:</p>
+                        <ul>
+                            <li>All households must segregate waste at source</li>
+                            <li>Use separate bins for wet, dry, hazardous, and sanitary waste</li>
+                            <li>Hand over segregated waste to collection workers</li>
+                            <li>Penalties apply for non-compliance</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>♻️ Best Practices</h3>
+                        <ul>
+                            <li><strong>Rinse containers:</strong> Clean plastic and glass before disposal</li>
+                            <li><strong>Flatten boxes:</strong> Compress cardboard to save space</li>
+                            <li><strong>Wrap hazardous waste:</strong> Seal batteries and medicines properly</li>
+                            <li><strong>Compost at home:</strong> Convert organic waste into fertilizer</li>
+                            <li><strong>Reduce & reuse:</strong> Minimize waste generation</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>📞 Need Help?</h3>
+                        <p>Contact Greater Chennai Corporation:</p>
+                        <ul>
+                            <li>Helpline: 1913 (24/7)</li>
+                            <li>Website: chennaicorporation.gov.in</li>
+                            <li>Mobile App: Chennai Corporation App</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-card tip-card">
+                        <h3>💡 Did You Know?</h3>
+                        <p>Chennai's wet waste can be converted into compost within 45 days! By segregating properly, you're contributing to a circular economy and reducing the city's carbon footprint.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chat History Section -->
+            <section id="history" class="content-section">
+                <div class="section-header">
+                    <h2>🕒 Chat History</h2>
+                    <p class="section-subtitle">View your previous conversations</p>
+                    <button id="clearHistoryBtn" class="clear-history-btn">
+                        <span class="btn-icon">🗑️</span>
+                        <span>Clear History</span>
+                    </button>
+                </div>
+                <div class="history-container">
+                    <div id="historyList" class="history-list">
+                        <p class="empty-history">No chat history yet. Start a conversation in the Chatbot tab!</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
